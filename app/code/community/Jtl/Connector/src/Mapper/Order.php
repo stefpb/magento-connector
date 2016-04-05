@@ -28,6 +28,7 @@ class Order
 {
     public static $paymentMethods = array(
         'amazonpayments_advanced' => PaymentTypes::TYPE_AMAPAY,
+        'amazonpayments_advanced_sandbox' => PaymentTypes::TYPE_AMAPAY,
         'bankpayment' => PaymentTypes::TYPE_PREPAYMENT,
         'banktransfer' => PaymentTypes::TYPE_BANK_TRANSFER,
         'cash' => PaymentTypes::TYPE_CASH,
