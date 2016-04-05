@@ -136,8 +136,15 @@ class Order
             $customerOrder->setStatus(NULL);
             $customerOrder->setCreationDate($created_at);
 
-            $payment = $order->getPayment();
-            $code = $payment->getMethodInstance()->getCode();
+            $code = 'bankpayment';
+            try {
+                $payment = $order->getPayment();
+                $methodInstance = $payment->getMethodInstance();
+
+                if ($methodInstance) {
+                    $code = $methodInstance->getCode();
+                }
+            } catch (Exception $e) {}
 
             if ($order->hasShipments() > 0) {
                 $customerOrder->setStatus(ConnectorCustomerOrder::STATUS_SHIPPED);
